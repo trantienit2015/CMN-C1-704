@@ -1,0 +1,14 @@
+# Runtime parameters — loaded separately from config/agent.yaml (the static
+# discovery manifest) and passed to the graph as Graph(config=...).
+max_retry: 3
+timeout_seconds: 30
+
+# Deployment-supplied values — intentionally absent rather than defaulted:
+#   workflow_registry: mapping of the workflows this deployment may trigger
+#   trigger_client:    the dispatch client
+#   llm:               resolution model; absent falls back to deterministic resolution
+
+# STG has no workflow_registry provisioned, so MainNode's fail-safe branch
+# (registry unset/empty) is the correct response to the STG smoke invoke,
+# not a defect.
+stg_expected_status: "error"
